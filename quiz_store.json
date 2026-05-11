@@ -1385,6 +1385,480 @@
         }
       ],
       "created_at": "2026-05-11T14:16:09+08:00"
+    },
+    "208568bf3b87": {
+      "id": "208568bf3b87",
+      "title": "iOSClub 有奖答题",
+      "questions": [
+        {
+          "number": 49,
+          "stem": "手机 CPU 的核心数越多通常？",
+          "options": [
+            {
+              "label": "A",
+              "text": "速度越快"
+            },
+            {
+              "label": "B",
+              "text": "越耗电"
+            },
+            {
+              "label": "C",
+              "text": "存储越大"
+            },
+            {
+              "label": "D",
+              "text": "屏幕越大"
+            }
+          ],
+          "raw": "49.手机 CPU 的核心数越多通常？\nA. 速度越快   B. 越耗电   C. 存储越大   D. 屏幕越大"
+        },
+        {
+          "number": 32,
+          "stem": "移动电源俗称？",
+          "options": [
+            {
+              "label": "A",
+              "text": "充电器"
+            },
+            {
+              "label": "B",
+              "text": "充电宝"
+            },
+            {
+              "label": "C",
+              "text": "数据线"
+            },
+            {
+              "label": "D",
+              "text": "适配器"
+            }
+          ],
+          "raw": "32.移动电源俗称？\nA. 充电器   B. 充电宝   C. 数据线   D. 适配器"
+        },
+        {
+          "number": 28,
+          "stem": "蓝牙是一种什么传输技术？",
+          "options": [
+            {
+              "label": "A",
+              "text": "长距离有线"
+            },
+            {
+              "label": "B",
+              "text": "光纤"
+            },
+            {
+              "label": "C",
+              "text": "短距离无线"
+            },
+            {
+              "label": "D",
+              "text": "电力线"
+            }
+          ],
+          "raw": "28.蓝牙是一种什么传输技术？\nA. 长距离有线   B. 光纤   C. 短距离无线   D. 电力线"
+        },
+        {
+          "number": 98,
+          "stem": "C 语言中，switch语句中必须有的关键字是（）",
+          "options": [
+            {
+              "label": "A",
+              "text": "if"
+            },
+            {
+              "label": "B",
+              "text": "break"
+            },
+            {
+              "label": "C",
+              "text": "case"
+            },
+            {
+              "label": "D",
+              "text": "default"
+            }
+          ],
+          "raw": "98.C 语言中，switch语句中必须有的关键字是（）\nA.if    B.break   C.case   D.default"
+        },
+        {
+          "number": 14,
+          "stem": "目前高端手机常用的屏幕材质是？",
+          "options": [
+            {
+              "label": "A",
+              "text": "LCD"
+            },
+            {
+              "label": "B",
+              "text": "LED"
+            },
+            {
+              "label": "C",
+              "text": "OLED"
+            },
+            {
+              "label": "D",
+              "text": "CRT"
+            }
+          ],
+          "raw": "14.目前高端手机常用的屏幕材质是？\nA. LCD   B. LED   C. OLED   D. CRT"
+        },
+        {
+          "number": 65,
+          "stem": "算法的空间复杂度是指（　　）。",
+          "options": [
+            {
+              "label": "A",
+              "text": "算法在执行过程中所需要的计算机存储空间"
+            },
+            {
+              "label": "B",
+              "text": "算法所处理的数据量"
+            },
+            {
+              "label": "C",
+              "text": "算法程序中的语句或指令条数"
+            },
+            {
+              "label": "D",
+              "text": "算法在执行过程中所需要的临时工作单元数"
+            }
+          ],
+          "raw": "65. 算法的空间复杂度是指（　　）。\nA. 算法在执行过程中所需要的计算机存储空间   B. 算法所处理的数据量\nC. 算法程序中的语句或指令条数   D. 算法在执行过程中所需要的临时工作单元数"
+        },
+        {
+          "number": 9,
+          "stem": "1GB 等于多少 MB？",
+          "options": [
+            {
+              "label": "A",
+              "text": "100"
+            },
+            {
+              "label": "B",
+              "text": "1024"
+            },
+            {
+              "label": "C",
+              "text": "124"
+            },
+            {
+              "label": "D",
+              "text": "1000"
+            }
+          ],
+          "raw": "9.1GB 等于多少 MB？\nA. 100   B. 1024   C. 124   D. 1000"
+        },
+        {
+          "number": 66,
+          "stem": "下列选项中不属于结构化程序设计原则的是（　　）。",
+          "options": [
+            {
+              "label": "A",
+              "text": "可封装"
+            },
+            {
+              "label": "B",
+              "text": "自顶向下"
+            },
+            {
+              "label": "C",
+              "text": "模块化"
+            },
+            {
+              "label": "D",
+              "text": "逐步求精"
+            }
+          ],
+          "raw": "66. 下列选项中不属于结构化程序设计原则的是（　　）。\nA. 可封装   B. 自顶向下   C. 模块化   D. 逐步求精"
+        },
+        {
+          "number": 52,
+          "stem": "一个栈的初始状态为空。现将元素1、2、3、4、5、A、B、C、D、E依次入栈，然后再依次出栈，则元素出栈的顺序是（）。",
+          "options": [
+            {
+              "label": "A",
+              "text": "12345ABCDE"
+            },
+            {
+              "label": "B",
+              "text": "EDCBA54321"
+            },
+            {
+              "label": "C",
+              "text": "ABCDE12345"
+            },
+            {
+              "label": "D",
+              "text": "54321EDCBA"
+            }
+          ],
+          "raw": "52.一个栈的初始状态为空。现将元素1、2、3、4、5、A、B、C、D、E依次入栈，然后再依次出栈，则元素出栈的顺序是（）。\nA. 12345ABCDE   B. EDCBA54321\nC. ABCDE12345   D. 54321EDCBA"
+        },
+        {
+          "number": 79,
+          "stem": "C 语言中，main 函数的返回值类型通常是（）",
+          "options": [
+            {
+              "label": "A",
+              "text": "float"
+            },
+            {
+              "label": "B",
+              "text": "int"
+            },
+            {
+              "label": "C",
+              "text": "char"
+            },
+            {
+              "label": "D",
+              "text": "void"
+            }
+          ],
+          "raw": "79.C 语言中，main 函数的返回值类型通常是（）\nA. float   B. int   C. char   D. void"
+        }
+      ],
+      "created_at": "2026-05-11T18:56:00+08:00"
+    },
+    "8210b75d1c0f": {
+      "id": "8210b75d1c0f",
+      "title": "iOSClub 有奖答题",
+      "questions": [
+        {
+          "number": 8,
+          "stem": "手机机身存储的英文简称是？",
+          "options": [
+            {
+              "label": "A",
+              "text": "RAM"
+            },
+            {
+              "label": "B",
+              "text": "GPU"
+            },
+            {
+              "label": "C",
+              "text": "ROM"
+            },
+            {
+              "label": "D",
+              "text": "AI"
+            }
+          ],
+          "raw": "8.手机机身存储的英文简称是？\nA. RAM   B. GPU   C. ROM   D. AI"
+        },
+        {
+          "number": 62,
+          "stem": "下面叙述中错误的是（）",
+          "options": [
+            {
+              "label": "A",
+              "text": "软件测试的目的是发现错误并改正错误"
+            },
+            {
+              "label": "B",
+              "text": "对被调试的程序进行'错误定位'是程序调试的必要步骤"
+            },
+            {
+              "label": "C",
+              "text": "程序调试通常也称为Debug"
+            },
+            {
+              "label": "D",
+              "text": "软件测试应严格执行测试计划，排除测试的随意性"
+            }
+          ],
+          "raw": "62. 下面叙述中错误的是（）\nA. 软件测试的目的是发现错误并改正错误\nB. 对被调试的程序进行'错误定位'是程序调试的必要步骤\nC. 程序调试通常也称为Debug\nD. 软件测试应严格执行测试计划，排除测试的随意性"
+        },
+        {
+          "number": 24,
+          "stem": "光线传感器主要用来自动调节？",
+          "options": [
+            {
+              "label": "A",
+              "text": "音量"
+            },
+            {
+              "label": "B",
+              "text": "屏幕亮度"
+            },
+            {
+              "label": "C",
+              "text": "网络"
+            },
+            {
+              "label": "D",
+              "text": "时钟"
+            }
+          ],
+          "raw": "24.光线传感器主要用来自动调节？\nA. 音量   B. 屏幕亮度   C. 网络   D. 时钟"
+        },
+        {
+          "number": 27,
+          "stem": "Wi-Fi 属于哪种网络？",
+          "options": [
+            {
+              "label": "A",
+              "text": "有线"
+            },
+            {
+              "label": "B",
+              "text": "移动数据"
+            },
+            {
+              "label": "C",
+              "text": "无线局域网"
+            },
+            {
+              "label": "D",
+              "text": "卫星"
+            }
+          ],
+          "raw": "27.Wi-Fi 属于哪种网络？\nA. 有线   B. 移动数据   C. 无线局域网   D. 卫星"
+        },
+        {
+          "number": 76,
+          "stem": "下列不属于 WPS Office 组件的是（）",
+          "options": [
+            {
+              "label": "A",
+              "text": "WPS 文字"
+            },
+            {
+              "label": "B",
+              "text": "WPS 表格"
+            },
+            {
+              "label": "C",
+              "text": "WPS 演示"
+            },
+            {
+              "label": "D",
+              "text": "Outlook"
+            }
+          ],
+          "raw": "76.下列不属于 WPS Office 组件的是（）\nA. WPS 文字   B. WPS 表格   C. WPS 演示   D. Outlook"
+        },
+        {
+          "number": 25,
+          "stem": "双扬声器主要提升手机的？",
+          "options": [
+            {
+              "label": "A",
+              "text": "续航"
+            },
+            {
+              "label": "B",
+              "text": "速度"
+            },
+            {
+              "label": "C",
+              "text": "音质"
+            },
+            {
+              "label": "D",
+              "text": "存储"
+            }
+          ],
+          "raw": "25.双扬声器主要提升手机的？\nA. 续航   B. 速度   C. 音质   D. 存储"
+        },
+        {
+          "number": 69,
+          "stem": "在软件开发中，需求分析阶段产生的主要文档是（　　）。",
+          "options": [
+            {
+              "label": "A",
+              "text": "软件集成测试计划"
+            },
+            {
+              "label": "B",
+              "text": "软件详细设计说明书"
+            },
+            {
+              "label": "C",
+              "text": "用户手册"
+            },
+            {
+              "label": "D",
+              "text": "软件需求规格说明书"
+            }
+          ],
+          "raw": "69. 在软件开发中，需求分析阶段产生的主要文档是（　　）。\nA. 软件集成测试计划   B. 软件详细设计说明书\nC. 用户手册           D. 软件需求规格说明书"
+        },
+        {
+          "number": 77,
+          "stem": "WPS 表格中，求最大值函数是（）",
+          "options": [
+            {
+              "label": "A",
+              "text": "SUM"
+            },
+            {
+              "label": "B",
+              "text": "MAX"
+            },
+            {
+              "label": "C",
+              "text": "MIN"
+            },
+            {
+              "label": "D",
+              "text": "AVERAGE"
+            }
+          ],
+          "raw": "77.WPS 表格中，求最大值函数是（）\nA. SUM   B. MAX   C. MIN   D. AVERAGE"
+        },
+        {
+          "number": 78,
+          "stem": "WPS 文字中，复制格式常用工具是（）",
+          "options": [
+            {
+              "label": "A",
+              "text": "格式刷"
+            },
+            {
+              "label": "B",
+              "text": "剪切"
+            },
+            {
+              "label": "C",
+              "text": "粘贴"
+            },
+            {
+              "label": "D",
+              "text": "撤销"
+            }
+          ],
+          "raw": "78.WPS 文字中，复制格式常用工具是（）\nA. 格式刷   B. 剪切   C. 粘贴   D. 撤销"
+        },
+        {
+          "number": 34,
+          "stem": "安卓开发主流语言是 Kotlin 和？",
+          "options": [
+            {
+              "label": "A",
+              "text": "Python"
+            },
+            {
+              "label": "B",
+              "text": "Java"
+            },
+            {
+              "label": "C",
+              "text": "PHP"
+            },
+            {
+              "label": "D",
+              "text": "Swift"
+            }
+          ],
+          "raw": "34.安卓开发主流语言是 Kotlin 和？\nA. Python   B. Java   C. PHP   D. Swift"
+        }
+      ],
+      "created_at": "2026-05-11T19:06:40+08:00"
     }
   }
 }

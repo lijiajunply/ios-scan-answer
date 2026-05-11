@@ -10,8 +10,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from flask import Flask, abort, jsonify, redirect, render_template, send_file, url_for
 import qrcode
+from flask import Flask, abort, jsonify, redirect, render_template, request, send_file, url_for
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -27,6 +27,35 @@ app = Flask(
 )
 
 
+ANSWER_KEY = dict(
+    enumerate(
+        [
+            "B", "A", "B", "C", "B",
+            "B", "B", "C", "B", "C",
+            "B", "C", "A", "C", "D",
+            "C", "B", "C", "B", "C",
+            "C", "B", "B", "B", "C",
+            "B", "C", "C", "B", "C",
+            "B", "B", "A", "B", "C",
+            "A", "B", "A", "B", "A",
+            "B", "C", "B", "D", "C",
+            "A", "C", "B", "A", "D",
+            "A", "B", "D", "A", "C",
+            "B", "A", "C", "A", "C",
+            "B", "A", "A", "B", "A",
+            "A", "B", "D", "D", "A",
+            "D", "D", "A", "C", "A",
+            "D", "B", "A", "B", "B",
+            "B", "B", "B", "A", "A",
+            "A", "B", "A", "A", "B",
+            "C", "B", "B", "B", "B",
+            "A", "B", "C", "B", "A",
+        ],
+        start=1,
+    )
+)
+
+
 def load_question_bank() -> list[str]:
     if QUESTION_BANK_PATH.exists():
         data = json.loads(QUESTION_BANK_PATH.read_text(encoding="utf-8"))
@@ -34,7 +63,7 @@ def load_question_bank() -> list[str]:
             return [str(item) for item in data]
 
     raise RuntimeError(
-        "没有找到题库文件。请在扫码答题/ 目录下放置 questions.json。"
+        "没有找到题库文件。请在扫码答题目录下放置 questions.json。"
     )
 
 
@@ -56,18 +85,35 @@ def parse_question(raw: str, index: int) -> dict[str, Any]:
     stem = match.group(2).strip() if match else head.strip()
 
     option_text = " ".join(lines[1:]).replace("\r", " ").replace("\n", " ").strip()
-    chunks = [chunk.strip() for chunk in re.split(r"\s{2,}(?=[A-D](?:[.．、\s]))", option_text) if chunk.strip()]
+    option_text = re.sub(r"\s+", " ", option_text)
 
     options: list[dict[str, str]] = []
-    for chunk in chunks:
-        option_match = re.match(r"^([A-D])(?:[.．、\s]+)?(.*)$", chunk)
-        if option_match:
-            label = option_match.group(1)
-            text = option_match.group(2).strip()
-        else:
-            label = chr(ord("A") + len(options))
-            text = chunk
-        options.append({"label": label, "text": text})
+    pattern = re.compile(r"(?<!\S)([A-D])(?:[.．、:：\)]\s*|\s+)")
+    matches = list(pattern.finditer(option_text))
+
+    if matches:
+        for match_index, item in enumerate(matches):
+            label = item.group(1)
+            start = item.end()
+            end = matches[match_index + 1].start() if match_index + 1 < len(matches) else len(option_text)
+            text = option_text[start:end].strip(" 。．.、:：)　")
+            if text:
+                options.append({"label": label, "text": text})
+    else:
+        chunks = [
+            chunk.strip()
+            for chunk in re.split(r"\s{2,}(?=[A-D](?:[.．、:：\)]|\s))", option_text)
+            if chunk.strip()
+        ]
+        for chunk in chunks:
+            option_match = re.match(r"^([A-D])(?:[.．、:：\)]\s*|\s+)?(.*)$", chunk)
+            if option_match:
+                label = option_match.group(1)
+                text = option_match.group(2).strip()
+            else:
+                label = chr(ord("A") + len(options))
+                text = chunk
+            options.append({"label": label, "text": text})
 
     return {
         "number": number,
@@ -116,6 +162,57 @@ def get_quiz(quiz_id: str) -> dict[str, Any] | None:
     quizzes = store.get("quizzes", {})
     quiz = quizzes.get(quiz_id)
     return quiz if isinstance(quiz, dict) else None
+
+
+def normalize_answer(value: Any) -> str:
+    return str(value or "").strip().upper()
+
+
+def correct_answer_for_question(question: dict[str, Any]) -> str:
+    number = question.get("number")
+    try:
+        number_int = int(number)
+    except (TypeError, ValueError):
+        return ""
+    return ANSWER_KEY.get(number_int, "")
+
+
+def grade_quiz(quiz: dict[str, Any], submitted_answers: list[Any]) -> dict[str, Any]:
+    questions = quiz.get("questions", [])
+    submitted_map: dict[int, str] = {}
+    for item in submitted_answers:
+        if not isinstance(item, dict):
+            continue
+        try:
+            index = int(item.get("index"))
+        except (TypeError, ValueError):
+            continue
+        submitted_map[index] = normalize_answer(item.get("answer"))
+
+    results: list[dict[str, Any]] = []
+    score = 0
+    for index, question in enumerate(questions):
+        selected = submitted_map.get(index, "")
+        correct = normalize_answer(correct_answer_for_question(question))
+        is_correct = bool(correct) and selected == correct
+        if is_correct:
+            score += 1
+        results.append(
+            {
+                "index": index,
+                "number": question.get("number"),
+                "selected": selected,
+                "correct": correct,
+                "is_correct": is_correct,
+                "answered": bool(selected),
+            }
+        )
+
+    return {
+        "score": score,
+        "total": len(questions),
+        "results": results,
+    }
 
 
 def public_url_for(endpoint: str, **values: Any) -> str:
@@ -177,6 +274,20 @@ def quiz_api(quiz_id: str):
     if quiz is None:
         abort(404)
     return jsonify(quiz)
+
+
+@app.post("/api/quiz/<quiz_id>/review")
+def quiz_review(quiz_id: str):
+    quiz = get_quiz(quiz_id)
+    if quiz is None:
+        abort(404)
+
+    payload = request.get_json(silent=True) or {}
+    answers = payload.get("answers", [])
+    if not isinstance(answers, list):
+        abort(400)
+
+    return jsonify(grade_quiz(quiz, answers))
 
 
 @app.get("/qr/<quiz_id>.png")

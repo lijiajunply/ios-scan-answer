@@ -237,6 +237,9 @@ body {
 }
 
 .option-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
     padding: 10px 12px;
     border: 1px solid var(--line);
     border-radius: 12px;
@@ -246,7 +249,61 @@ body {
 }
 
 .option-row strong {
+    flex: 0 0 auto;
     color: var(--primary);
+}
+
+.option-row input {
+    margin-top: 0.2em;
+    flex: 0 0 auto;
+}
+
+.question-card.is-correct {
+    border-color: rgba(22, 163, 74, 0.35);
+    background: linear-gradient(180deg, rgba(22, 163, 74, 0.04), #fff 28%);
+}
+
+.question-card.is-wrong {
+    border-color: rgba(220, 38, 38, 0.35);
+    background: linear-gradient(180deg, rgba(220, 38, 38, 0.04), #fff 28%);
+}
+
+.question-card.is-unanswered {
+    border-color: rgba(245, 158, 11, 0.35);
+}
+
+.option-row.is-selected {
+    border-color: var(--primary);
+    background: rgba(37, 99, 235, 0.04);
+}
+
+.option-row.is-correct {
+    border-color: rgba(22, 163, 74, 0.5);
+    background: rgba(22, 163, 74, 0.08);
+}
+
+.option-row.is-wrong {
+    border-color: rgba(220, 38, 38, 0.5);
+    background: rgba(220, 38, 38, 0.08);
+}
+
+.question-result {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.question-card.is-correct .question-result {
+    color: var(--success);
+}
+
+.question-card.is-wrong .question-result {
+    color: #b91c1c;
+}
+
+.question-card.is-unanswered .question-result {
+    color: #b45309;
 }
 
 .status-bar {
