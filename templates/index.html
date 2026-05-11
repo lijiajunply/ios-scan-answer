@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扫码答题</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="admin-page">
+    <main class="page-shell">
+        <section class="hero band">
+            <div class="hero-copy">
+                <div class="brand-lockup">
+                    <img class="brand-logo" src="{{ url_for('static', filename='club-logo.jpg') }}" alt="iOS Club 社团 Logo">
+                    <div class="brand-meta">
+                        <div class="brand-name">iOS Club</div>
+                        <div class="brand-tag">社团答题系统</div>
+                    </div>
+                </div>
+                <p class="eyebrow">扫码答题</p>
+                <h1>随机生成 10 道题，扫码直接进入答题页。</h1>
+                <p class="lead">程序会把抽出的题目保存到云端地址，二维码只负责打开这个公网页面。</p>
+            </div>
+            <form class="hero-action" method="post" action="{{ url_for('create_quiz') }}">
+                <button class="btn primary" type="submit">生成新的答题二维码</button>
+            </form>
+        </section>
+
+        {% if quiz %}
+        <section class="panel share-panel">
+            <div class="share-grid">
+                <div class="share-copy">
+                    <p class="section-label">公开地址</p>
+                    <input class="link-box" id="public-link" type="text" readonly value="{{ public_url }}">
+                    <div class="action-row">
+                        <a class="btn secondary" href="{{ public_url }}" target="_blank" rel="noreferrer">打开答题页</a>
+                        <button class="btn secondary" id="copy-link" type="button">复制链接</button>
+                    </div>
+                    <div class="meta-row">
+                        <span>编号 {{ quiz.id }}</span>
+                        <span>生成于 {{ quiz.created_at }}</span>
+                    </div>
+                </div>
+                <div class="share-code">
+                    <img src="{{ url_for('quiz_qr', quiz_id=quiz.id) }}" alt="答题二维码" class="qr-image">
+                </div>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="section-head">
+                <p class="section-label">题目预览</p>
+            </div>
+            <div class="question-list">
+                {% for item in quiz.questions %}
+                <article class="question-card">
+                    <div class="question-head">
+                        <div class="question-index">{{ item.number }}</div>
+                        <div class="question-text">{{ item.stem }}</div>
+                    </div>
+                    <div class="option-list">
+                        {% for option in item.options %}
+                        <div class="option-row"><strong>{{ option.label }}.</strong> {{ option.text }}</div>
+                        {% endfor %}
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+    </main>
+
+    <script>
+        const copyButton = document.getElementById('copy-link');
+        const publicLink = document.getElementById('public-link');
+        if (copyButton && publicLink) {
+            copyButton.addEventListener('click', async () => {
+                try {
+                    await navigator.clipboard.writeText(publicLink.value);
+                    copyButton.textContent = '已复制';
+                    setTimeout(() => {
+                        copyButton.textContent = '复制链接';
+                    }, 1500);
+                } catch (error) {
+                    copyButton.textContent = '复制失败';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

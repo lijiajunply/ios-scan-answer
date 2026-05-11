@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ quiz.title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="quiz-page">
+    <main class="page-shell">
+        <section class="hero band">
+            <div class="hero-copy">
+                <div class="brand-lockup">
+                    <img class="brand-logo" src="{{ url_for('static', filename='club-logo.jpg') }}" alt="iOS Club 社团 Logo">
+                    <div class="brand-meta">
+                        <div class="brand-name">iOS Club</div>
+                        <div class="brand-tag">社团答题系统</div>
+                    </div>
+                </div>
+                <p class="eyebrow">答题页</p>
+                <h1>{{ quiz.title }}</h1>
+                <p class="lead">页面会加载这一次二维码对应的 10 道题。</p>
+            </div>
+            <div class="hero-action">
+                <button class="btn primary" id="submit-btn" type="button">提交</button>
+                <button class="btn secondary" id="reset-btn" type="button">重置</button>
+            </div>
+        </section>
+
+        <section class="status-bar">
+            <div class="status-pill" id="question-count">题目 0 道</div>
+            <div class="status-text" id="status-text">等待加载题目。</div>
+        </section>
+
+        <main id="quiz-root"></main>
+    </main>
+
+    <script>
+        window.QUIZ_ID = {{ quiz.id | tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='quiz.js') }}"></script>
+</body>
+</html>
