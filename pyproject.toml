@@ -1,0 +1,13 @@
+[project]
+name = "ios-scan-answer"
+version = "0.1.0"
+description = "iOSClub 扫码答题"
+requires-python = ">=3.11"
+dependencies = [
+    "flask>=3.1.0",
+    "qrcode[pil]>=8.2",
+    "gunicorn>=23.0.0",
+]
+
+[dependency-groups]
+dev = []
