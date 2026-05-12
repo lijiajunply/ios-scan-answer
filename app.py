@@ -8,6 +8,7 @@ import re
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
+from threading import Lock
 from typing import Any
 
 import qrcode
@@ -19,6 +20,7 @@ STORE_PATH = BASE_DIR / "quiz_store.json"
 QUESTION_BANK_PATH = BASE_DIR / "questions.json"
 QUESTION_COUNT = 10
 PUBLIC_BASE_URL = os.environ.get("PUBLIC_BASE_URL", "").rstrip("/")
+STORE_LOCK = Lock()
 
 app = Flask(
     __name__,
@@ -148,13 +150,16 @@ def build_quiz_payload() -> dict[str, Any]:
         "title": title,
         "questions": questions,
         "created_at": now_iso(),
+        "submitted_at": None,
+        "review": None,
     }
 
 
 def save_quiz(payload: dict[str, Any]) -> None:
-    store = load_store()
-    store.setdefault("quizzes", {})[payload["id"]] = payload
-    save_store(store)
+    with STORE_LOCK:
+        store = load_store()
+        store.setdefault("quizzes", {})[payload["id"]] = payload
+        save_store(store)
 
 
 def get_quiz(quiz_id: str) -> dict[str, Any] | None:
@@ -213,6 +218,25 @@ def grade_quiz(quiz: dict[str, Any], submitted_answers: list[Any]) -> dict[str, 
         "total": len(questions),
         "results": results,
     }
+
+
+def submit_quiz_once(quiz_id: str, answers: list[Any]) -> tuple[dict[str, Any] | None, bool]:
+    with STORE_LOCK:
+        store = load_store()
+        quizzes = store.get("quizzes", {})
+        quiz = quizzes.get(quiz_id)
+        if not isinstance(quiz, dict):
+            return None, False
+
+        review = quiz.get("review")
+        if quiz.get("submitted_at") and isinstance(review, dict):
+            return review, True
+
+        review = grade_quiz(quiz, answers)
+        quiz["submitted_at"] = now_iso()
+        quiz["review"] = review
+        save_store(store)
+        return review, False
 
 
 def public_url_for(endpoint: str, **values: Any) -> str:
@@ -278,16 +302,23 @@ def quiz_api(quiz_id: str):
 
 @app.post("/api/quiz/<quiz_id>/review")
 def quiz_review(quiz_id: str):
-    quiz = get_quiz(quiz_id)
-    if quiz is None:
-        abort(404)
-
     payload = request.get_json(silent=True) or {}
     answers = payload.get("answers", [])
     if not isinstance(answers, list):
         abort(400)
 
-    return jsonify(grade_quiz(quiz, answers))
+    review, already_submitted = submit_quiz_once(quiz_id, answers)
+    if review is None:
+        abort(404)
+    if already_submitted:
+        return jsonify(
+            {
+                "message": "该答题已经提交过，不能重复提交。",
+                "review": review,
+            }
+        ), 409
+
+    return jsonify(review)
 
 
 @app.get("/qr/<quiz_id>.png")

@@ -1859,6 +1859,654 @@
         }
       ],
       "created_at": "2026-05-11T19:06:40+08:00"
+    },
+    "e5f11c816a43": {
+      "id": "e5f11c816a43",
+      "title": "iOSClub 有奖答题",
+      "questions": [
+        {
+          "number": 64,
+          "stem": "下列数据结构中，能够按照'先进后出'原则存取数据的是（　　）。",
+          "options": [
+            {
+              "label": "A",
+              "text": "循环队列"
+            },
+            {
+              "label": "B",
+              "text": "栈"
+            },
+            {
+              "label": "C",
+              "text": "队列"
+            },
+            {
+              "label": "D",
+              "text": "二叉树"
+            }
+          ],
+          "raw": "64. 下列数据结构中，能够按照'先进后出'原则存取数据的是（　　）。\nA. 循环队列   B. 栈   C. 队列   D. 二叉树"
+        },
+        {
+          "number": 51,
+          "stem": "算法的有穷性是指（）。",
+          "options": [
+            {
+              "label": "A",
+              "text": "算法程序的运行时间是有限的"
+            },
+            {
+              "label": "B",
+              "text": "算法程序所处理的数据量是有限的"
+            },
+            {
+              "label": "C",
+              "text": "算法程序的长度是有限的"
+            },
+            {
+              "label": "D",
+              "text": "算法只能被有限的用户使用"
+            }
+          ],
+          "raw": "51.算法的有穷性是指（）。\nA. 算法程序的运行时间是有限的   B. 算法程序所处理的数据量是有限的\nC. 算法程序的长度是有限的       D. 算法只能被有限的用户使用"
+        },
+        {
+          "number": 53,
+          "stem": "下列逻辑运算规则的描述中，________是错误的。",
+          "options": [
+            {
+              "label": "A",
+              "text": "0.OR.0=0"
+            },
+            {
+              "label": "B",
+              "text": "0.OR.1=1"
+            },
+            {
+              "label": "C",
+              "text": "1.OR.0=1"
+            },
+            {
+              "label": "D",
+              "text": "1.OR.1=2"
+            }
+          ],
+          "raw": "53.下列逻辑运算规则的描述中，________是错误的。\nA 0.OR.0=0   B 0.OR.1=1   C 1.OR.0=1   D 1.OR.1=2"
+        },
+        {
+          "number": 68,
+          "stem": "软件测试的目的是（　　）。",
+          "options": [
+            {
+              "label": "A",
+              "text": "评估软件可靠性"
+            },
+            {
+              "label": "B",
+              "text": "发现并改正程序中的错误"
+            },
+            {
+              "label": "C",
+              "text": "改正程序中的错误"
+            },
+            {
+              "label": "D",
+              "text": "发现程序中的错误"
+            }
+          ],
+          "raw": "68. 软件测试的目的是（　　）。\nA. 评估软件可靠性     B. 发现并改正程序中的错误\nC. 改正程序中的错误   D. 发现程序中的错误"
+        },
+        {
+          "number": 75,
+          "stem": "下面描述中，不属于软件危机表现的是（　　）。",
+          "options": [
+            {
+              "label": "A",
+              "text": "软件过程不规范"
+            },
+            {
+              "label": "B",
+              "text": "软件开发生产率低"
+            },
+            {
+              "label": "C",
+              "text": "软件质量难以控制"
+            },
+            {
+              "label": "D",
+              "text": "软件成本不断提高"
+            }
+          ],
+          "raw": "75. 下面描述中，不属于软件危机表现的是（　　）。\nA. 软件过程不规范     B. 软件开发生产率低\nC. 软件质量难以控制   D. 软件成本不断提高"
+        },
+        {
+          "number": 95,
+          "stem": "Python 中，以下合法变量名是（）",
+          "options": [
+            {
+              "label": "A",
+              "text": "123abc"
+            },
+            {
+              "label": "B",
+              "text": "abc_123"
+            },
+            {
+              "label": "C",
+              "text": "if"
+            },
+            {
+              "label": "D",
+              "text": "abc-123"
+            }
+          ],
+          "raw": "95.Python 中，以下合法变量名是（）\nA.123abc   B.abc_123   C.if   D.abc-123"
+        },
+        {
+          "number": 9,
+          "stem": "1GB 等于多少 MB？",
+          "options": [
+            {
+              "label": "A",
+              "text": "100"
+            },
+            {
+              "label": "B",
+              "text": "1024"
+            },
+            {
+              "label": "C",
+              "text": "124"
+            },
+            {
+              "label": "D",
+              "text": "1000"
+            }
+          ],
+          "raw": "9.1GB 等于多少 MB？\nA. 100   B. 1024   C. 124   D. 1000"
+        },
+        {
+          "number": 23,
+          "stem": "手机陀螺仪属于？",
+          "options": [
+            {
+              "label": "A",
+              "text": "电池"
+            },
+            {
+              "label": "B",
+              "text": "传感器"
+            },
+            {
+              "label": "C",
+              "text": "屏幕"
+            },
+            {
+              "label": "D",
+              "text": "摄像头"
+            }
+          ],
+          "raw": "23.手机陀螺仪属于？\nA. 电池   B. 传感器   C. 屏幕   D. 摄像头"
+        },
+        {
+          "number": 47,
+          "stem": "下列哪个是编程语言？",
+          "options": [
+            {
+              "label": "A",
+              "text": "Windows"
+            },
+            {
+              "label": "B",
+              "text": "Office"
+            },
+            {
+              "label": "C",
+              "text": "Python"
+            },
+            {
+              "label": "D",
+              "text": "Photoshop"
+            }
+          ],
+          "raw": "47.下列哪个是编程语言？\nA. Windows   B. Office   C. Python   D. Photoshop"
+        },
+        {
+          "number": 87,
+          "stem": "Python 中，print(2+3*2)输出结果是（）",
+          "options": [
+            {
+              "label": "A",
+              "text": "10"
+            },
+            {
+              "label": "B",
+              "text": "8"
+            },
+            {
+              "label": "C",
+              "text": "7"
+            },
+            {
+              "label": "D",
+              "text": "9"
+            }
+          ],
+          "raw": "87.Python 中，print(2+3*2)输出结果是（）\nA.10   B.8   C.7   D.9"
+        }
+      ],
+      "created_at": "2026-05-12T13:41:18+08:00",
+      "submitted_at": "2026-05-12T13:41:39+08:00",
+      "review": {
+        "score": 2,
+        "total": 10,
+        "results": [
+          {
+            "index": 0,
+            "number": 64,
+            "selected": "A",
+            "correct": "B",
+            "is_correct": false,
+            "answered": true
+          },
+          {
+            "index": 1,
+            "number": 51,
+            "selected": "A",
+            "correct": "A",
+            "is_correct": true,
+            "answered": true
+          },
+          {
+            "index": 2,
+            "number": 53,
+            "selected": "A",
+            "correct": "D",
+            "is_correct": false,
+            "answered": true
+          },
+          {
+            "index": 3,
+            "number": 68,
+            "selected": "A",
+            "correct": "D",
+            "is_correct": false,
+            "answered": true
+          },
+          {
+            "index": 4,
+            "number": 75,
+            "selected": "A",
+            "correct": "A",
+            "is_correct": true,
+            "answered": true
+          },
+          {
+            "index": 5,
+            "number": 95,
+            "selected": "A",
+            "correct": "B",
+            "is_correct": false,
+            "answered": true
+          },
+          {
+            "index": 6,
+            "number": 9,
+            "selected": "A",
+            "correct": "B",
+            "is_correct": false,
+            "answered": true
+          },
+          {
+            "index": 7,
+            "number": 23,
+            "selected": "A",
+            "correct": "B",
+            "is_correct": false,
+            "answered": true
+          },
+          {
+            "index": 8,
+            "number": 47,
+            "selected": "A",
+            "correct": "C",
+            "is_correct": false,
+            "answered": true
+          },
+          {
+            "index": 9,
+            "number": 87,
+            "selected": "A",
+            "correct": "B",
+            "is_correct": false,
+            "answered": true
+          }
+        ]
+      }
+    },
+    "4a5753e54cca": {
+      "id": "4a5753e54cca",
+      "title": "iOSClub 有奖答题",
+      "questions": [
+        {
+          "number": 74,
+          "stem": "下列关于线性链表的叙述中，正确的是（　　）。",
+          "options": [
+            {
+              "label": "A",
+              "text": "各数据结点的存储空间可以不连续，但它们的存储顺序与逻辑顺序必须一致"
+            },
+            {
+              "label": "B",
+              "text": "各数据结点的存储顺序与逻辑顺序可以不一致，但它们的存储空间必须连续"
+            },
+            {
+              "label": "C",
+              "text": "进行插入与删除时，不需要移动表中的元素"
+            },
+            {
+              "label": "D",
+              "text": "以上说法均不正确"
+            }
+          ],
+          "raw": "74. 下列关于线性链表的叙述中，正确的是（　　）。\nA. 各数据结点的存储空间可以不连续，但它们的存储顺序与逻辑顺序必须一致\nB. 各数据结点的存储顺序与逻辑顺序可以不一致，但它们的存储空间必须连续\nC. 进行插入与删除时，不需要移动表中的元素\nD. 以上说法均不正确"
+        },
+        {
+          "number": 40,
+          "stem": "数据单位从小到大顺序正确的是？",
+          "options": [
+            {
+              "label": "A",
+              "text": "B→KB→MB→GB"
+            },
+            {
+              "label": "B",
+              "text": "GB→MB→KB→B"
+            },
+            {
+              "label": "C",
+              "text": "KB→B→MB→GB"
+            },
+            {
+              "label": "D",
+              "text": "MB→KB→GB→B"
+            }
+          ],
+          "raw": "40.数据单位从小到大顺序正确的是？\nA. B→KB→MB→GB   B. GB→MB→KB→B\nC. KB→B→MB→GB   D. MB→KB→GB→B"
+        },
+        {
+          "number": 8,
+          "stem": "手机机身存储的英文简称是？",
+          "options": [
+            {
+              "label": "A",
+              "text": "RAM"
+            },
+            {
+              "label": "B",
+              "text": "GPU"
+            },
+            {
+              "label": "C",
+              "text": "ROM"
+            },
+            {
+              "label": "D",
+              "text": "AI"
+            }
+          ],
+          "raw": "8.手机机身存储的英文简称是？\nA. RAM   B. GPU   C. ROM   D. AI"
+        },
+        {
+          "number": 25,
+          "stem": "双扬声器主要提升手机的？",
+          "options": [
+            {
+              "label": "A",
+              "text": "续航"
+            },
+            {
+              "label": "B",
+              "text": "速度"
+            },
+            {
+              "label": "C",
+              "text": "音质"
+            },
+            {
+              "label": "D",
+              "text": "存储"
+            }
+          ],
+          "raw": "25.双扬声器主要提升手机的？\nA. 续航   B. 速度   C. 音质   D. 存储"
+        },
+        {
+          "number": 95,
+          "stem": "Python 中，以下合法变量名是（）",
+          "options": [
+            {
+              "label": "A",
+              "text": "123abc"
+            },
+            {
+              "label": "B",
+              "text": "abc_123"
+            },
+            {
+              "label": "C",
+              "text": "if"
+            },
+            {
+              "label": "D",
+              "text": "abc-123"
+            }
+          ],
+          "raw": "95.Python 中，以下合法变量名是（）\nA.123abc   B.abc_123   C.if   D.abc-123"
+        },
+        {
+          "number": 55,
+          "stem": "笔记本电脑中，用来替代鼠标器的最常用设备是________。",
+          "options": [
+            {
+              "label": "A",
+              "text": "扫描仪"
+            },
+            {
+              "label": "B",
+              "text": "笔输入"
+            },
+            {
+              "label": "C",
+              "text": "触摸板"
+            },
+            {
+              "label": "D",
+              "text": "触摸屏"
+            }
+          ],
+          "raw": "55. 笔记本电脑中，用来替代鼠标器的最常用设备是________。\nA 扫描仪   B 笔输入   C 触摸板   D 触摸屏"
+        },
+        {
+          "number": 100,
+          "stem": "以下不属于面向对象语言的是（）",
+          "options": [
+            {
+              "label": "A",
+              "text": "C"
+            },
+            {
+              "label": "B",
+              "text": "C++"
+            },
+            {
+              "label": "C",
+              "text": "Java"
+            },
+            {
+              "label": "D",
+              "text": "Python"
+            }
+          ],
+          "raw": "100.以下不属于面向对象语言的是（）\nA.C   B.C++   C.Java   D.Python"
+        },
+        {
+          "number": 62,
+          "stem": "下面叙述中错误的是（）",
+          "options": [
+            {
+              "label": "A",
+              "text": "软件测试的目的是发现错误并改正错误"
+            },
+            {
+              "label": "B",
+              "text": "对被调试的程序进行'错误定位'是程序调试的必要步骤"
+            },
+            {
+              "label": "C",
+              "text": "程序调试通常也称为Debug"
+            },
+            {
+              "label": "D",
+              "text": "软件测试应严格执行测试计划，排除测试的随意性"
+            }
+          ],
+          "raw": "62. 下面叙述中错误的是（）\nA. 软件测试的目的是发现错误并改正错误\nB. 对被调试的程序进行'错误定位'是程序调试的必要步骤\nC. 程序调试通常也称为Debug\nD. 软件测试应严格执行测试计划，排除测试的随意性"
+        },
+        {
+          "number": 9,
+          "stem": "1GB 等于多少 MB？",
+          "options": [
+            {
+              "label": "A",
+              "text": "100"
+            },
+            {
+              "label": "B",
+              "text": "1024"
+            },
+            {
+              "label": "C",
+              "text": "124"
+            },
+            {
+              "label": "D",
+              "text": "1000"
+            }
+          ],
+          "raw": "9.1GB 等于多少 MB？\nA. 100   B. 1024   C. 124   D. 1000"
+        },
+        {
+          "number": 50,
+          "stem": "数码编程的核心是？",
+          "options": [
+            {
+              "label": "A",
+              "text": "画画"
+            },
+            {
+              "label": "B",
+              "text": "打字"
+            },
+            {
+              "label": "C",
+              "text": "剪辑"
+            },
+            {
+              "label": "D",
+              "text": "代码与逻辑"
+            }
+          ],
+          "raw": "50.数码编程的核心是？\nA. 画画   B. 打字   C. 剪辑   D. 代码与逻辑"
+        }
+      ],
+      "created_at": "2026-05-12T13:44:51+08:00",
+      "submitted_at": "2026-05-12T13:44:54+08:00",
+      "review": {
+        "score": 0,
+        "total": 10,
+        "results": [
+          {
+            "index": 0,
+            "number": 74,
+            "selected": "A",
+            "correct": "C",
+            "is_correct": false,
+            "answered": true
+          },
+          {
+            "index": 1,
+            "number": 40,
+            "selected": "",
+            "correct": "A",
+            "is_correct": false,
+            "answered": false
+          },
+          {
+            "index": 2,
+            "number": 8,
+            "selected": "",
+            "correct": "C",
+            "is_correct": false,
+            "answered": false
+          },
+          {
+            "index": 3,
+            "number": 25,
+            "selected": "",
+            "correct": "C",
+            "is_correct": false,
+            "answered": false
+          },
+          {
+            "index": 4,
+            "number": 95,
+            "selected": "",
+            "correct": "B",
+            "is_correct": false,
+            "answered": false
+          },
+          {
+            "index": 5,
+            "number": 55,
+            "selected": "",
+            "correct": "C",
+            "is_correct": false,
+            "answered": false
+          },
+          {
+            "index": 6,
+            "number": 100,
+            "selected": "",
+            "correct": "A",
+            "is_correct": false,
+            "answered": false
+          },
+          {
+            "index": 7,
+            "number": 62,
+            "selected": "",
+            "correct": "A",
+            "is_correct": false,
+            "answered": false
+          },
+          {
+            "index": 8,
+            "number": 9,
+            "selected": "",
+            "correct": "B",
+            "is_correct": false,
+            "answered": false
+          },
+          {
+            "index": 9,
+            "number": 50,
+            "selected": "",
+            "correct": "D",
+            "is_correct": false,
+            "answered": false
+          }
+        ]
+      }
     }
   }
 }

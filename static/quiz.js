@@ -34,6 +34,63 @@ function clearReviewState(root) {
     });
 }
 
+function formatReviewStatus(review) {
+    const percent = review.total ? Math.round((review.score / review.total) * 100) : 0;
+    return `已提交：${review.score} / ${review.total} 题，得分 ${percent} 分。`;
+}
+
+function renderReview(root, review) {
+    clearReviewState(root);
+
+    review.results.forEach(result => {
+        const card = root.querySelector(`.question-card[data-question-index="${result.index}"]`);
+        if (!card) {
+            return;
+        }
+
+        const selected = result.selected || '';
+        const correct = result.correct || '';
+        const selectedInput = selected ? card.querySelector(`#q${result.index}-${selected}`) : null;
+        const selectedLabel = selected ? card.querySelector(`label[for="q${result.index}-${selected}"]`) : null;
+        const correctLabel = correct ? card.querySelector(`label[for="q${result.index}-${correct}"]`) : null;
+
+        if (selectedInput) {
+            selectedInput.checked = true;
+        }
+        if (selectedLabel) {
+            selectedLabel.classList.add('is-selected');
+        }
+        if (correctLabel) {
+            correctLabel.classList.add('is-correct');
+        }
+        if (selected && selected !== correct && selectedLabel) {
+            selectedLabel.classList.add('is-wrong');
+        }
+
+        card.classList.add(result.is_correct ? 'is-correct' : 'is-wrong');
+
+        const resultText = card.querySelector('.question-result');
+        if (resultText) {
+            if (!selected) {
+                resultText.textContent = `未作答，正确答案是 ${correct || '未知'}`;
+                card.classList.add('is-unanswered');
+            } else if (result.is_correct) {
+                resultText.textContent = `回答正确，答案是 ${correct || '未知'}`;
+            } else {
+                resultText.textContent = `回答错误，你选了 ${selected}，正确答案是 ${correct || '未知'}`;
+            }
+        }
+    });
+}
+
+function lockQuizControls(root, submitBtn) {
+    root.querySelectorAll('input[type="radio"]').forEach(input => {
+        input.disabled = true;
+    });
+    submitBtn.disabled = true;
+    submitBtn.textContent = '已提交';
+}
+
 function renderQuiz(quiz) {
     const root = document.getElementById('quiz-root');
     const countTag = document.getElementById('question-count');
@@ -91,66 +148,28 @@ function renderQuiz(quiz) {
             }
 
             const review = await response.json();
-            clearReviewState(root);
-
-            review.results.forEach(result => {
-                const card = root.querySelector(`.question-card[data-question-index="${result.index}"]`);
-                if (!card) {
-                    return;
-                }
-
-                const selected = result.selected || '';
-                const correct = result.correct || '';
-                const selectedLabel = selected ? card.querySelector(`label[for="q${result.index}-${selected}"]`) : null;
-                const correctLabel = correct ? card.querySelector(`label[for="q${result.index}-${correct}"]`) : null;
-
-                if (selectedLabel) {
-                    selectedLabel.classList.add('is-selected');
-                }
-                if (correctLabel) {
-                    correctLabel.classList.add('is-correct');
-                }
-                if (selected && selected !== correct && selectedLabel) {
-                    selectedLabel.classList.add('is-wrong');
-                }
-
-                card.classList.add(result.is_correct ? 'is-correct' : 'is-wrong');
-
-                const resultText = card.querySelector('.question-result');
-                if (resultText) {
-                    if (!selected) {
-                        resultText.textContent = `未作答，正确答案是 ${correct || '未知'}`;
-                        card.classList.add('is-unanswered');
-                    } else if (result.is_correct) {
-                        resultText.textContent = `回答正确，答案是 ${correct || '未知'}`;
-                    } else {
-                        resultText.textContent = `回答错误，你选了 ${selected}，正确答案是 ${correct || '未知'}`;
-                    }
-                }
-            });
-
-            const percent = review.total ? Math.round((review.score / review.total) * 100) : 0;
-            statusText.textContent = `已批改：${review.score} / ${review.total} 题，得分 ${percent} 分。`;
-            submitBtn.textContent = '重新批改';
+            renderReview(root, review);
+            statusText.textContent = formatReviewStatus(review);
+            lockQuizControls(root, submitBtn);
         } catch (error) {
             console.error(error);
-            statusText.textContent = '批改失败，请稍后重试。';
+            statusText.textContent = '提交失败，请稍后重试。';
+            submitBtn.disabled = false;
             submitBtn.textContent = '提交';
         } finally {
-            submitBtn.disabled = false;
+            if (submitBtn.textContent !== '已提交') {
+                submitBtn.disabled = false;
+            }
         }
     }
 
     submitBtn.addEventListener('click', reviewQuiz);
 
-    document.getElementById('reset-btn').addEventListener('click', () => {
-        document.querySelectorAll('input[type="radio"]').forEach(input => {
-            input.checked = false;
-        });
-        clearReviewState(root);
-        statusText.textContent = '已重置选择。';
-        submitBtn.textContent = '提交';
-    });
+    if (quiz.submitted_at && quiz.review) {
+        renderReview(root, quiz.review);
+        statusText.textContent = formatReviewStatus(quiz.review);
+        lockQuizControls(root, submitBtn);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
